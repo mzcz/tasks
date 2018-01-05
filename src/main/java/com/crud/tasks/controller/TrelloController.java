@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 @RestController
 @RequestMapping("/v1/trello")
 public class TrelloController {
@@ -42,8 +40,9 @@ public class TrelloController {
         });
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard", consumes = APPLICATION_JSON_VALUE)
-    public List<CreatedTrelloCard> createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
+    @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard", headers = "Accept=application/json")
+    public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
+
         return trelloClient.createNewCard(trelloCardDto);
     }
 }
