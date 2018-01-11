@@ -12,8 +12,4 @@ public class Mail {
     private  String subject;
     private  String  message;
 
-    public static boolean checkIsNullOrEmpty(String arg){
-        if(!arg.trim().equals("") || !arg.trim().equals(" ") || arg.trim() != null) return true;
-        return false;
-    }
 }
