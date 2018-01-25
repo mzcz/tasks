@@ -1,14 +1,13 @@
 package com.crud.tasks.controller;
 
-import com.crud.tasks.domain.CreatedTrelloCard;
+import com.crud.tasks.domain.CreatedTrelloCardDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
-import com.crud.tasks.service.TrelloService;
+import com.crud.tasks.trello.facade.TrelloFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin("*")
 @RestController
@@ -16,11 +15,11 @@ import java.util.stream.Collectors;
 public class TrelloController {
 
     @Autowired
-    private TrelloService trelloService;
+    private TrelloFacade trelloFacade;
 
-    @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
+    @RequestMapping(method = RequestMethod.GET, value = "/getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
-
+/*
         List<TrelloBoardDto> trelloBoards = trelloService.fetchTrelloBoards().stream()
         .filter(trelloBoard -> trelloBoard.getName().contains("Kodilla"))
                 .collect(Collectors.toList());
@@ -34,15 +33,14 @@ public class TrelloController {
         trelloBoardDto.getLists().forEach(trelloList ->
                 System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.getIsClosed()));
 
-        });
+        });*/
 
-        return trelloService.fetchTrelloBoards();
+        return trelloFacade.fetchTrelloBoards();
     }
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard", headers = "Accept=application/json")
-    public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-
-        return trelloService.createTrelloCard(trelloCardDto);
+    @RequestMapping(method = RequestMethod.POST, value = "/createTrelloCard", headers = "Accept=application/json")
+    public CreatedTrelloCardDto createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
+        return trelloFacade.createCard(trelloCardDto);
     }
 }
