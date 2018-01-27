@@ -1,8 +1,6 @@
 package com.crud.tasks.trello.client;
 
-import com.crud.tasks.domain.CreatedTrelloCardDto;
-import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.domain.*;
 import com.crud.tasks.trello.config.TrelloConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -75,11 +73,15 @@ public class TrelloClientTest {
         );
         URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
 
+        TrelloDto trelloDto = new TrelloDto(5,5);
+        TrelloAttachmentsDto attachmentsByType = new TrelloAttachmentsDto(trelloDto);
+        TrelloBadgesDto badgesDto  = new TrelloBadgesDto(1,attachmentsByType);
+
         CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto(
                 "1",
                 "Test task",
                 "http://test.com",
-                null
+                badgesDto
         );
 
         when(restTemplate.postForObject(uri ,null, CreatedTrelloCardDto.class)).thenReturn(createdTrelloCardDto);
