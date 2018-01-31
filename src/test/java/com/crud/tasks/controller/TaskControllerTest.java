@@ -112,7 +112,7 @@ service.getAllTasks() zeby ona Ci zwracala jakies taski, (czy jednego taska).
         Task task = new Task(1L,"taskToDelete","TaskContent");
         when(service.getTask(1L)).thenReturn(java.util.Optional.ofNullable(task));
 
-        //when(service.delete(task)).thenReturn(task);
+       //when(service.delete(task)).thenReturn(task)
 
         //When & Then
         mockMvc.perform(delete("/v1/task/deleteTask?taskId=1")
