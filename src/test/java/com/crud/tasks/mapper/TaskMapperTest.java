@@ -20,7 +20,6 @@ public class TaskMapperTest {
 
     @Autowired
     private TaskMapper taskMapper;
-
     @Test
     public void mapToTaskTest()  {
         //Given
@@ -34,7 +33,6 @@ public class TaskMapperTest {
         assertEquals("test_title", task.getTitle());
 
     }
-
     @Test
     public void mapToTaskDtoTest()  {
         //Given
@@ -48,7 +46,6 @@ public class TaskMapperTest {
         assertEquals("test_body", task.getContent());
 
     }
-
     @Test
     public void mapToTaskDtoListTest()  {
         //Given
