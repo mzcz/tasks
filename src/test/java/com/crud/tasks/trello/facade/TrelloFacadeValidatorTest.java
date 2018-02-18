@@ -35,7 +35,7 @@ public class TrelloFacadeValidatorTest {
         mappedTrelloLists.add(new TrelloList("1", "my_list",false));
 
         List<TrelloBoard> mappedTrelloBoards = new ArrayList<>();
-        mappedTrelloBoards.add(new TrelloBoard("1", "my_task", mappedTrelloLists));
+        mappedTrelloBoards.add(new TrelloBoard("1", "Kodilla", mappedTrelloLists));
         mappedTrelloBoards.add(new TrelloBoard("2", "test", mappedTrelloLists));
         //When
         List<TrelloBoard> filteredBoards = trelloValidator.validateTrelloBoards(mappedTrelloBoards);
